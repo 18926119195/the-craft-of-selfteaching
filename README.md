@@ -1,5 +1,7 @@
 # the-craft-of-selfteaching
 
+首次接手请读[入库指南](ONBOARDING.md)，其中列有开发时间线、当前实现和第一项验收任务。
+
 > One has no future if one couldn't teach themself<a href='#fn1' name='fn1b'><sup>[1]</sup></a>.
 
 # 自学是门手艺
