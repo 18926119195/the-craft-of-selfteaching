@@ -1,34 +1,35 @@
 # 《自学是门手艺》入库指南
 
-这是李笑来《自学是门手艺》的教学资料分支。协作者可以从章节导航进入可执行的 Python 示例，沿用现有校对流程。书籍版权与授权见 [README](README.md)，GitHub 上游为 [xiaolai/the-craft-of-selfteaching](https://github.com/xiaolai/the-craft-of-selfteaching)。本次审阅的快照为 [`master` 的 `38b0bca`](https://github.com/18926119195/the-craft-of-selfteaching/commit/38b0bcaed3743fdee25bb5b3d75f522f49a4b93f)。
+[一分钟定位](#一分钟定位) · [沿聊天时间线看灵感](#沿聊天时间线看灵感) · [从代码反查来由](#从代码反查来由) · [走读与维护记录](#走读与维护记录)
 
-## 章节入口与目录
+## 一分钟定位
 
-| 入口 | 适用场景 |
+这是李笑来《自学是门手艺》的教材分支。根目录有可运行的 Python Notebook，`markdown/` 有供网页阅读的章节，`from-readers/` 和 `my-notes/` 是读者来信与笔记。当前基线为 [`master` 的 `38b0bca`](https://github.com/18926119195/the-craft-of-selfteaching/commit/38b0bcaed3743fdee25bb5b3d75f522f49a4b93f)。上游和书稿授权分别见 [上游项目](https://github.com/xiaolai/the-craft-of-selfteaching) 与 [README](README.md)。
+
+## 沿聊天时间线看灵感
+
+**如何读状态。** 已实现表示在所列版本找到与灵感相符的代码路径。部分实现表示已有其中一段。未实现表示已查的入口尚无对应实现。证据不足时标待确认。归档与设计文稿按资料本身的状态描述。
+
+本库默认分支、可见提交与 Issue 中未定位到仓库主人和 AI 的研发会话。下列时间来自书稿说明和 Git 提交，记录可追溯的编辑决定，原始想法的对话来源仍待确认。
+
+| ID／时间 | 可追溯编辑决定 | 状态 | 文件证据 |
+| --- | --- | --- | --- |
+| <a name="idea-i01"></a>I01 · 2019-03-23 | README 记载新增 Markdown 阅读形式，读者可在网页直接看章节。[出版说明](README.md) | 已落地 | [Markdown 目录](markdown/README.md) 与 [Notebook 目录](README.md#目录) 对应。 |
+| <a name="idea-i02"></a>I02 · 2021-07-04 | 字符串章节经历两个独立的校对改动，Notebook 删掉重复解释，Markdown 调整换行示例的注释摆放。[Notebook 提交](https://github.com/18926119195/the-craft-of-selfteaching/commit/9cbb4d3) · [Markdown 提交](https://github.com/18926119195/the-craft-of-selfteaching/commit/f8a8b83) | 已落地 | [字符串 Notebook](Part.1.E.5.strings.ipynb) 与 [字符串 Markdown](markdown/Part.1.E.5.strings.md) 可分开定位。 |
+| <a name="idea-i03"></a>I03 · 2023-05-03 提交，作者日期为 2019-06-30 | 将示例里的字符串赋值放到同组查找调用之前，让读者一眼看到这些方法共用什么输入。[提交说明和差异](https://github.com/18926119195/the-craft-of-selfteaching/commit/38b0bcaed3743fdee25bb5b3d75f522f49a4b93f) | 已落地（该 Markdown 改动） | 当前基线只改 [字符串 Markdown](markdown/Part.1.E.5.strings.md) 的这一处，Notebook 的对应例子独立读取。 |
+
+## 从代码反查来由
+
+| 先看到的文件 | 能查到的来由 |
 | --- | --- |
-| [README](README.md) 与 [前言](01.preface.ipynb) | 课程顺序、作者说明和阅读边界 |
-| [JupyterLab 安装与配置](T-appendix.jupyter-installation-and-setup.ipynb) | 打开仓库根目录中的 `.ipynb`，逐段阅读和运行 |
-| [Markdown 目录](markdown/README.md) | 在 GitHub 中阅读正文及定位对应章节 |
-| [书稿校对流程](02.proof-of-work.ipynb) | 建立单章节、可复核的 PR |
-| [读者来信与笔记](from-readers/) · [学习笔记](my-notes/) | 了解读者实践和笔记，与书稿正文区分归档 |
+| [字符串 Notebook](Part.1.E.5.strings.ipynb) 与 [字符串 Markdown](markdown/Part.1.E.5.strings.md) | [I01](#idea-i01)–[I03](#idea-i03)。两者是同一章节的两种形式，单次改动可能只出现在其中一份。 |
+| [JupyterLab 配置](T-appendix.jupyter-installation-and-setup.ipynb) 与 [校对教程](02.proof-of-work.ipynb) | 分别说明怎样启动阅读环境、怎样提交小范围校改。 |
+| [读者来信](from-readers/) 与 [自学笔记](my-notes/) | 能找到读者的学习背景和练习记录。它们与书稿正文分别归档。 |
 
-阅读从 Part 1 的值、流程、函数、字符串和容器进入，再视任务查 Part 2 的函数与测试、Part 3 的类与正则等专题。与 Agent 协作时，可直接提供一个章节路径、一个待查示例及期望输出。
+## 走读与维护记录
 
-## 开发历程与状态
+第一次读，从 README 进字符串章节，在 Markdown 找到 `str.find()` 的示例，再打开对应 Notebook 的同一节。最后看 [I03](#idea-i03) 的差异，确认哪一行是教学表达上的改动，哪些例子本来就已存在。
 
-| 证据时间 | 已有内容 | 边界 |
-| --- | --- | --- |
-| 2019-03-23，仓库 README 记载 | 增加 Markdown 阅读形式，和根目录的 notebook 章节并行。[README](README.md) · [Markdown 目录](markdown/README.md) | 双形式都可阅读，内容同步需按章节检查。 |
-| 2019-06-30 作者日期，2023-05-03 提交日期 | 当前基线修改了 Markdown 字符串章节中示例的排列顺序，让变量的使用位置更清楚。此提交仅改一份文件。[提交差异](https://github.com/18926119195/the-craft-of-selfteaching/commit/38b0bcaed3743fdee25bb5b3d75f522f49a4b93f) · [对应 Notebook](Part.1.E.5.strings.ipynb) | 修改的两种章节表示是否需要对齐，由具体示例的教学意图决定。 |
-| 当前基线 | 已有校对教程、读者笔记、Notebook 示例、Markdown 镜像和本地图片。离线解析 47 个 `.ipynb`，首页及 Markdown 目录中核对的 95 个本地章节链接均存在。 | 当前检索范围为默认分支目录、可见提交说明和可见 Issue。未找到此分支的 AI 协作会话，也未发现仓库级 Notebook 全量执行、双格式同步门禁或 Agent 教学产品。Notebook 执行等待按章节验证。 |
+本次离线解析 47 个 Notebook 文件，检查两个首页中的 95 个本地章节链接。若发现原始会话或新的校对依据，按 I 编号补时间、章节位置与提交即可。
 
-## 第一个可验收任务
-
-1. **确定目标。** 选择字符串章节中一个具体例子，写下预期学习结果及其章节位置，为该例子保存当前 Notebook 和 Markdown 的对照片段。
-2. **复核表现。** 在干净 Python kernel 运行例子及直接依赖的单元格，记录 Python 版本、预期输出、实测输出和失败位置。对比 Markdown 与 Notebook 的变量、调用顺序和旁注。
-3. **控制改动范围。** 校对 PR 引用原章节位置与运行证据。涉及书稿改作或分发时，先依据 README 所列授权与维护方确认可采用的校对方式。
-4. **引入反馈。** 建议验收门槛为本次涉及的相对链接全部解析、对应代码示例结果一致、人工复核通过。发现差异时保留最小可复现例，先找源头，修订后重新运行。Agent 可以提出解释和练习提示，由复核者确认书意及输出后纳入协作。
-
-## 方法依据
-
-本指南把总体设计落实为边界、目标和任务接口，把工程控制中的反馈落实为观测、判据和纠偏。维护者用原始协作记录、代码和固定样本共同核验定性判断与量化结果，据此决定下一轮行动。[《工程控制论》](https://openlibrary.org/books/OL49218199M/Engineering_cybernetics) · [《组织管理的技术——系统工程》](https://doi.org/10.13255/j.cnki.jusst.2011.06.020) · [《一个科学新领域——开放的复杂巨系统及其方法论》](https://cnki.istiz.org.cn/kcms/detail/detail.aspx?dbcode=CPFD&dbname=cpfd1999&filename=ZGXC199008001001)
+**指南如何更新。** 以仓库和版本划定范围，从聊天提取原始目标，再用代码与产物校正对当时决策的理解。新证据出现时，回到原编号修订记录。这种读法借鉴了钱学森的系统工程和工程控制论。 [《组织管理的技术——系统工程》](https://doi.org/10.13255/j.cnki.jusst.2011.06.020) · [《工程控制论》](https://openlibrary.org/books/OL49218199M/Engineering_cybernetics)
